@@ -27,17 +27,24 @@ with an Nginx proxy and a MySQL database.
 application with an Nginx proxy and a PostgreSQL database.
 - [`Java Spark / MySQL`](https://github.com/docker/awesome-compose/tree/master/sparkjava-mysql) - Sample Java application and
 a MySQL database.
+- [`NGINX / ASP.NET / MySQL`](https://github.com/docker/awesome-compose/tree/master/nginx-aspnet-mysql) - Sample Nginx reverse proxy with an C# backend using ASP.NET
 - [`NGINX / Flask / MongoDB`](https://github.com/docker/awesome-compose/tree/master/nginx-flask-mongo) - Sample Python/Flask
 application with Nginx proxy and a Mongo database.
-- [`NGINX / Flask / MySQL`](https://github.com/docker/awesome-compose/tree/master/nginx-flask-mysql) - Sample Python/Flask
-application with an Nginx proxy and a MySQL database.
+- [`NGINX / Flask / MySQL`](https://github.com/docker/awesome-compose/tree/master/nginx-flask-mysql) - Sample Python/Flask application with an Nginx proxy and a MySQL database.
+- [`NGINX / Node.js / Redis`](https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis) - Sample Node.js application with Nginx proxy and a Redis database
 - [`NGINX / Go`](https://github.com/docker/awesome-compose/tree/master/nginx-golang) - Sample Nginx proxy with a Go backend.
+- [`NGINX / WSGI / Flask`](https://github.com/docker/awesome-compose/tree/master/nginx-wsgi-flask) - Sample Nginx reverse proxy with a Flask backend using WSGI.
+- [`PostgreSQL / pgAdmin`](https://github.com/docker/awesome-compose/tree/master/postgresql-pgadmin) - Sample setup for postgreSQL database with pgAdmin web interface
+- [`Python / Flask / Redis`](https://github.com/docker/awesome-compose/tree/master/flask-redis) - Sample Python/Flask and a Redis database
 - [`React / Spring / MySQL`](https://github.com/docker/awesome-compose/tree/master/react-java-mysql) - Sample React
 application with a Spring backend and a MySQL database.
 - [`React / Express / MySQL`](https://github.com/docker/awesome-compose/tree/master/react-express-mysql) - Sample React
 application with a Node.js backend and a MySQL database.
+- [`React / Express / MongoDB`](https://github.com/docker/awesome-compose/tree/master/react-express-mongodb) - Sample React
+application with a Node.js backend and a Mongo database.
 - [`React / Rust / PostgreSQL`](https://github.com/docker/awesome-compose/tree/master/react-rust-postgres) - Sample React
 application with a Rust backend and a Postgres database.
+- [`React / Nginx`](https://github.com/docker/awesome-compose/tree/master/react-nginx) - Sample React application with Nginx.
 - [`Spring / PostgreSQL`](https://github.com/docker/awesome-compose/tree/master/spring-postgres) - Sample Java application
 with Spring framework and a Postgres database.  
 ## Single service samples
@@ -49,12 +56,16 @@ with Spring framework and a Postgres database.
 - [`Traefik`](https://github.com/docker/awesome-compose/tree/master/traefik-golang)
 - [`Django`](https://github.com/docker/awesome-compose/tree/master/django)
 - [`Minecraft server`](https://github.com/docker/awesome-compose/tree/master/minecraft)
+- [`Plex`](https://github.com/docker/awesome-compose/tree/master/plex)
+- [`Portainer`](https://github.com/docker/awesome-compose/tree/master/portainer)
+- [`Wireguard`](https://github.com/docker/awesome-compose/tree/master/wireguard)
 ## Basic setups for different platforms (not production ready - useful for personal use) 
 - [`Gitea / PostgreSQL`](https://github.com/docker/awesome-compose/tree/master/gitea-postgres)
 - [`Nextcloud / PostgreSQL`](https://github.com/docker/awesome-compose/tree/master/nextcloud-postgres)
 - [`Nextcloud / Redis / MariaDB`](https://github.com/docker/awesome-compose/tree/master/nextcloud-redis-mariadb)
-- [`Wordpress / MySQL`](https://github.com/docker/awesome-compose/tree/master/wordpress-mysql)
+- [`Pi-hole / cloudflared`](https://github.com/docker/awesome-compose/tree/master/pihole-cloudflared-DoH) - Sample Pi-hole setup with use of DoH cloudflared service
 - [`Prometheus / Grafana`](https://github.com/docker/awesome-compose/tree/master/prometheus-grafana)
+- [`Wordpress / MySQL`](https://github.com/docker/awesome-compose/tree/master/wordpress-mysql)
 
 <!--lint disable awesome-toc-->
 ## Getting started
@@ -73,12 +84,12 @@ deploying samples of containerized applications with Docker Compose.
 
 ### Running a sample
 
-The root directory of each sample contains the `docker-compose.yaml` which
+The root directory of each sample contains the `compose.yaml` which
 describes the configuration of service components. All samples can be run in
 a local environment by going into the root directory of each one and executing:
 
 ```console
-docker-compose up -d
+docker compose up -d
 ```
 
 Check the `README.md` of each sample to get more details on the structure and
@@ -86,7 +97,7 @@ what is the expected output.
 To stop and remove all containers of the sample application run:
 
 ```console
-docker-compose down
+docker compose down
 ```
 <!--lint disable awesome-toc-->
 ## Contribute

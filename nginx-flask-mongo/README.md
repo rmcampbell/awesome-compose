@@ -4,7 +4,7 @@
 Project structure:
 ```
 .
-├── docker-compose.yaml
+├── compose.yaml
 ├── flask
 │   ├── Dockerfile
 │   ├── requirements.txt
@@ -14,7 +14,7 @@ Project structure:
 
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
 services:
   web:
@@ -28,13 +28,13 @@ services:
     image: mongo
 ```
 The compose file defines an application with three services `web`, `backend` and `db`.
-When deploying the application, docker-compose maps port 80 of the web service container to port 80 of the host as specified in the file.
+When deploying the application, docker compose maps port 80 of the web service container to port 80 of the host as specified in the file.
 Make sure port 80 on the host is not being used by another container, otherwise the port should be changed.
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "nginx-flask-mongo_default" with the default driver
 Pulling mongo (mongo:)...
 latest: Pulling from library/mongo
@@ -62,10 +62,10 @@ d7eea5481c77        mongo                       "docker-entrypoint.s…"   About
 After the application starts, navigate to `http://localhost:80` in your web browser or run:
 ```
 $ curl localhost:80
-Hello fom the MongoDB client!
+Hello from the MongoDB client!
 ```
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 ```

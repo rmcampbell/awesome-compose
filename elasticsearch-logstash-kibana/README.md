@@ -4,10 +4,10 @@
 Project structure:
 ```
 .
-└── docker-compose.yml
+└── compose.yaml
 ```
 
-[_docker-compose.yml_](docker-compose.yml)
+[_compose.yaml_](compose.yaml)
 ```
 services:
   elasticsearch:
@@ -21,10 +21,10 @@ services:
     ...
 ```
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "elasticsearch-logstash-kibana_elastic" with driver "bridge"
 Creating es ... done
 Creating log ... done
@@ -46,11 +46,11 @@ After the application starts, navigate to below links in your web browser:
 
 * Elasticsearch: [`http://localhost:9200`](http://localhost:9200)
 * Logstash: [`http://localhost:9600`](http://localhost:9600)
-* Kibana: [`http://localhost:5601`](http://localhost:5601)
+* Kibana: [`http://localhost:5601/api/status`](http://localhost:5601/api/status)
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 ```
 
 ## Attribution

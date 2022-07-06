@@ -9,31 +9,38 @@ Project structure:
 │   └── ...
 ├── db
 │   └── password.txt
-├── docker-compose.yaml
+├── compose.yaml
 └── README.md
 
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
-version: "3.7"
 services:
   backend:
     build: backend
     ports:
     - 8080:8080
   db:
-    image: mysql:8.0.19
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    image: mariadb:10.6.4-focal
+    # If you really want to use MySQL, uncomment the following line
+    #image: mysql:8.0.27
     ...
 ```
 The compose file defines an application with two services `backend` and `db`.
-When deploying the application, docker-compose maps port 8080 of the backend service container to port 80 of the host as specified in the file.
+When deploying the application, docker compose maps port 8080 of the backend service container to port 80 of the host as specified in the file.
 Make sure port 8080 on the host is not already being in use.
 
-## Deploy with docker-compose
+> ℹ️ **_INFO_**  
+> For compatibility purpose between `AMD64` and `ARM64` architecture, we use a MariaDB as database instead of MySQL.  
+> You still can use the MySQL image by uncommenting the following line in the Compose file   
+> `#image: mysql:8.0.27`
+
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "sparkjava-mysql_default" with the default driver
 Building backend
 ...
@@ -61,7 +68,7 @@ $ curl localhost:8080
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 Stopping sparkjava-mysql_backend_1 ... done
 Stopping sparkjava-mysql_db_1      ... done
 Removing sparkjava-mysql_backend_1 ... done

@@ -7,14 +7,14 @@ Project structure:
 ├── backend
 │   ├── Dockerfile
 │   ...
-├── docker-compose.yaml
+├── compose.yaml
 ├── frontend
 │   ├── ...
 │   └── Dockerfile
 └── README.md
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
 services:
   frontend:
@@ -22,7 +22,7 @@ services:
       context: frontend
     ...
     ports:
-      - 5000:5000
+      - 3000:3000
     ...
   server:
     container_name: server
@@ -42,13 +42,13 @@ services:
     ...
 ```
 The compose file defines an application with three services `frontend`, `backend` and `db`.
-When deploying the application, docker-compose maps port 5000 of the frontend service container to port 5000 of the host as specified in the file.
-Make sure port 5000 on the host is not already being in use.
+When deploying the application, docker compose maps port 3000 of the frontend service container to port 3000 of the host as specified in the file.
+Make sure port 3000 on the host is not already being in use.
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "react-express-mongodb_default" with the default driver
 Building frontend
 Step 1/9 : FROM node:13.13.0-stretch-slim
@@ -68,17 +68,17 @@ Listing containers must show containers running and the port mapping as below:
 $ docker ps
 CONTAINER ID        IMAGE                               COMMAND                  CREATED             STATUS                  PORTS                      NAMES
 06e606d69a0e        react-express-mongodb_server        "docker-entrypoint.s…"   23 minutes ago      Up 23 minutes           0.0.0.0:3000->3000/tcp     server
-ff56585e1db4        react-express-mongodb_frontend      "docker-entrypoint.s…"   23 minutes ago      Up 23 minutes           0.0.0.0:5000->5000/tcp     frontend
+ff56585e1db4        react-express-mongodb_frontend      "docker-entrypoint.s…"   23 minutes ago      Up 23 minutes           0.0.0.0:3000->3000/tcp     frontend
 a1f321f06490        mongo:4.2.0                         "docker-entrypoint.s…"   23 minutes ago      Up 23 minutes           0.0.0.0:27017->27017/tcp   mongo
 ```
 
-After the application starts, navigate to `http://localhost:5000` in your web browser.
+After the application starts, navigate to `http://localhost:3000` in your web browser.
 
 ![page](./output.png)
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 Stopping server   ... done
 Stopping frontend ... done
 Stopping mongo    ... done
@@ -104,12 +104,12 @@ Our main goal to create a containers, it starts from here. As you can see there 
 
 ##### Service app (backend - NodeJS)
 
-We make image of app from our `DockeFile`, explanation below.
+We make image of app from our `Dockerfile`, explanation below.
 
 __Explanation of service server__
 
 - Defining a **nodejs** service as __server__.
-- We named our **node server** container service as **server**. Assigning a name to the containers makes it easier to read when there are lot of containers on a machine, it can aslo avoid randomly generated container names. (Although in this case, __container_name__ is also __server__, this is merely personal preference, the name of the service and container do not have to be the same.) 
+- We named our **node server** container service as **server**. Assigning a name to the containers makes it easier to read when there are lot of containers on a machine, it can also avoid randomly generated container names. (Although in this case, __container_name__ is also __server__, this is merely personal preference, the name of the service and container do not have to be the same.) 
 - Docker container starts automatically if its fails.
 - Building the __server__ image using the Dockerfile from the current directory and passing an argument to the
 backend(server) `DockerFile`.

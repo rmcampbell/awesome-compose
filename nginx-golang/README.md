@@ -7,16 +7,15 @@ Project structure:
 ├── backend
 │   ├── Dockerfile
 │   └── main.go
-├── docker-compose.yml
+├── compose.yaml
 ├── frontend
 │   ├── Dockerfile
 │   └── nginx.conf
 └── README.md
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
-version: "3.7"
 services:
   frontend:
     build: frontend
@@ -28,13 +27,13 @@ services:
     build: backend
 ```
 The compose file defines an application with two services `frontend` and `backend`.
-When deploying the application, docker-compose maps port 80 of the frontend service container to the same port of the host as specified in the file.
+When deploying the application, docker compose maps port 80 of the frontend service container to the same port of the host as specified in the file.
 Make sure port 80 on the host is not already in use.
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "nginx-golang_default" with the default driver
 Building backend
 Step 1/7 : FROM golang:1.13 AS build
@@ -76,5 +75,5 @@ Hello from Docker!
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 ```
